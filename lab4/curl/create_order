@@ -1,0 +1,20 @@
+#!/bin/bash
+body='
+{
+  "books": [
+    {
+      "book_id": 4,
+      "quantity": 2
+    },
+    {
+      "book_id": 3,
+      "quantity": 1
+    }
+  ],
+  "user_id": 20
+}
+'
+
+curl -XPOST -H "content-type: application/json" \
+  -d "$body" \
+  localhost:4000/api/orders

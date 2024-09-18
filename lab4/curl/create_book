@@ -1,0 +1,17 @@
+#!/bin/bash
+body='
+{
+  "book": {
+    "name": "name4",
+    "description": "description4",
+    "author": "author4",
+    "price": 1234,
+    "quantity": 234,
+    "isbn": "23-345"
+  }
+}
+'
+
+curl -XPOST -H "content-type: application/json" \
+  -d "$body" \
+  localhost:4000/api/books

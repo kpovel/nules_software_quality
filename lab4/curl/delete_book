@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -XDELETE localhost:4000/api/books/2
