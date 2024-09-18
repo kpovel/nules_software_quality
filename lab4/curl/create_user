@@ -1,0 +1,12 @@
+#!/bin/bash
+body='
+{
+  "user": {
+    "name": "name69"
+  }
+}
+'
+
+curl -XPOST -H "content-type: application/json" \
+  -d "$body" \
+  localhost:4000/api/users

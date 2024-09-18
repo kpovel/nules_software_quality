@@ -5,17 +5,38 @@ defmodule Lab4Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Lab4Web do
+  scope "/api/books", Lab4Web do
     pipe_through :api
+
+    get "/", BookController, :index
+    get "/:id", BookController, :show
+    post "/", BookController, :create
+    put "/:id", BookController, :update
+    delete "/:id", BookController, :delete
   end
 
-  # Enable LiveDashboard in development
+  scope "/api/users", Lab4Web do
+    pipe_through :api
+
+    get "/", UserController, :index
+    get "/:id", UserController, :show
+    post "/", UserController, :create
+    put "/:id", UserController, :update
+    delete "/:id", UserController, :delete
+  end
+
+  scope "/api/orders", Lab4Web do
+    pipe_through :api
+
+    get "/", OrderController, :index
+    get "/:id", OrderController, :show
+    get "/user/:user_id", OrderController, :user_orders
+
+    post "/", OrderController, :create
+    put "/:id", OrderController, :update
+  end
+
   if Application.compile_env(:lab4, :dev_routes) do
-    # If you want to use the LiveDashboard in production, you should put
-    # it behind authentication and allow only admins to access it.
-    # If your application does not have an admins-only section yet,
-    # you can use Plug.BasicAuth to set up some basic authentication
-    # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do

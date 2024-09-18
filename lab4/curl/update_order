@@ -1,0 +1,10 @@
+#!/bin/bash
+body='
+{
+  "order_status": "created"
+}
+'
+
+curl -XPUT -H "content-type: application/json" \
+  -d "$body" \
+  localhost:4000/api/orders/7
